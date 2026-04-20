@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% block title %}Dashboard - NutriTrack{% endblock %}
+{% block content %}
+
+<div class="max-w-5xl mx-auto px-4 py-10">
+  <!-- Welcome Banner -->
+  <div class="bg-gradient-to-r from-emerald-500 to-emerald-700 rounded-2xl p-8 text-white mb-8 relative overflow-hidden">
+    <div class="absolute right-0 top-0 w-48 h-48 bg-white/5 rounded-full -translate-y-16 translate-x-16"></div>
+    <div class="absolute right-16 bottom-0 w-32 h-32 bg-white/5 rounded-full translate-y-12"></div>
+    <div class="relative">
+      <p class="text-emerald-200 text-sm font-semibold mb-1">Welcome back</p>
+      <h1 class="text-3xl font-extrabold mb-2">Hello, {{ session.username }}!</h1>
+      <p class="text-emerald-100">Ready to track your nutrition today? Use the tools below to stay on top of your goals.</p>
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+    <div class="bg-white rounded-2xl p-5 shadow-sm border border-gray-100 text-center">
+      <div class="text-3xl font-extrabold text-emerald-500">{{ total_foods }}</div>
+      <div class="text-gray-500 text-sm mt-1">Foods Available</div>
+    </div>
+    <div class="bg-white rounded-2xl p-5 shadow-sm border border-gray-100 text-center">
+      <div class="text-3xl font-extrabold text-blue-500">{{ categories }}</div>
+      <div class="text-gray-500 text-sm mt-1">Categories</div>
+    </div>
+    <div class="bg-white rounded-2xl p-5 shadow-sm border border-gray-100 text-center">
+      <div class="text-3xl font-extrabold text-purple-500">2</div>
+      <div class="text-gray-500 text-sm mt-1">Calculators</div>
+    </div>
+    <div class="bg-white rounded-2xl p-5 shadow-sm border border-gray-100 text-center">
+      <div class="text-3xl font-extrabold text-orange-500">4</div>
+      <div class="text-gray-500 text-sm mt-1">Macros Tracked</div>
+    </div>
+  </div>
+
+  <!-- Quick Actions -->
+  <h2 class="text-xl font-bold text-gray-900 mb-4">Quick Actions</h2>
+  <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-5 mb-8">
+    <a href="/foods" class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 card-hover flex items-start gap-4 group">
+      <div class="w-12 h-12 bg-emerald-100 group-hover:bg-emerald-500 rounded-xl flex items-center justify-center transition-colors flex-shrink-0">
+        <svg class="w-6 h-6 text-emerald-600 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/>
+        </svg>
+      </div>
+      <div>
+        <h3 class="font-bold text-gray-900">Browse Foods</h3>
+        <p class="text-sm text-gray-500 mt-0.5">Explore the full food database</p>
+      </div>
+    </a>
+
+    <a href="/calculators" class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 card-hover flex items-start gap-4 group">
+      <div class="w-12 h-12 bg-blue-100 group-hover:bg-blue-500 rounded-xl flex items-center justify-center transition-colors flex-shrink-0">
+        <svg class="w-6 h-6 text-blue-600 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 11h.01M12 11h.01M15 11h.01M4 20h16a2 2 0 002-2V8a2 2 0 00-2-2h-5.586a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 0011.586 3H4a2 2 0 00-2 2v13a2 2 0 002 2z"/>
+        </svg>
+      </div>
+      <div>
+        <h3 class="font-bold text-gray-900">Nutrition Calculator</h3>
+        <p class="text-sm text-gray-500 mt-0.5">Calculate macros for any serving</p>
+      </div>
+    </a>
+
+    <a href="/calculators" class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 card-hover flex items-start gap-4 group">
+      <div class="w-12 h-12 bg-purple-100 group-hover:bg-purple-500 rounded-xl flex items-center justify-center transition-colors flex-shrink-0">
+        <svg class="w-6 h-6 text-purple-600 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+        </svg>
+      </div>
+      <div>
+        <h3 class="font-bold text-gray-900">BMI Calculator</h3>
+        <p class="text-sm text-gray-500 mt-0.5">Check your body mass index</p>
+      </div>
+    </a>
+  </div>
+
+  <!-- Tips -->
+  <div class="bg-emerald-50 border border-emerald-100 rounded-2xl p-6">
+    <h3 class="font-bold text-emerald-800 mb-3 flex items-center gap-2">
+      <svg class="w-5 h-5 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+      </svg>
+      Nutrition Tips
+    </h3>
+    <ul class="space-y-2 text-sm text-emerald-700">
+      <li class="flex items-start gap-2"><span class="text-emerald-400 font-bold">•</span> Aim for 0.8–1g of protein per kg of body weight daily</li>
+      <li class="flex items-start gap-2"><span class="text-emerald-400 font-bold">•</span> Complex carbs (oats, brown rice, sweet potatoes) provide longer-lasting energy</li>
+      <li class="flex items-start gap-2"><span class="text-emerald-400 font-bold">•</span> Healthy fats (avocado, almonds, salmon) support brain function and hormones</li>
+      <li class="flex items-start gap-2"><span class="text-emerald-400 font-bold">•</span> Track macros in addition to calories for a complete nutritional picture</li>
+    </ul>
+  </div>
+</div>
+{% endblock %}
